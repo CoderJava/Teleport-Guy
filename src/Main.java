@@ -50,15 +50,45 @@ public class Main {
 
         // direction = 1 (atas); 2 (kanan); 3 (bawah); 4 (kiri)
         int direction = 1;
-        int barisIndexStartTemp = barisIndexStart;
-        int kolomIndexStartTemp = kolomIndexStart;
         while (true) {
+            int barisIndexStartTemp = barisIndexStart;
+            int kolomIndexStartTemp = kolomIndexStart;
             switch (direction) {
                 case 1:
                     if (barisIndexStartTemp - 1 < 0) {
                         direction = 2;
                     } else if (isTeleport) {
-
+                        if (kolomIndexStartTemp - 2 > 0 && detailMap[barisIndexStartTemp][kolomIndexStartTemp - 1].equals("#")
+                                && detailMap[barisIndexStartTemp][kolomIndexStartTemp - 2].equalsIgnoreCase("o")) {
+                            // cek apakah di kirinya ada tembok dan setelahnya teleport
+                            // TODO: 11/18/17 do something in here
+                            isTeleport = true;
+                            totalTimeJump += totalTimeJump;
+                        } else if (barisIndexStartTemp - 2 > 0 && detailMap[barisIndexStartTemp - 1][kolomIndexStartTemp].equals("#")
+                                && detailMap[barisIndexStartTemp - 2][kolomIndexStartTemp].equalsIgnoreCase("o")) {
+                            // cek apakah di atasnya ada tembok dan setelahnya teleport
+                            // TODO: 11/18/17 do something in here
+                            isTeleport = true;
+                            totalTimeJump += totalTimeJump;
+                        } else if (kolomIndexStartTemp + 2 < kolom && detailMap[barisIndexStartTemp][kolomIndexStartTemp + 1].equals("#")
+                                && detailMap[barisIndexStartTemp][kolomIndexStartTemp + 2].equalsIgnoreCase("o")) {
+                            // cek apakah di kanannya ada tembok dan setelahnya teleport
+                            // TODO: 11/18/17 do something in here
+                            isTeleport = true;
+                            totalTimeJump += totalTimeJump;
+                        } else if (kolomIndexStartTemp - 1 > 0 && detailMap[barisIndexStartTemp][kolomIndexStartTemp - 1].equals(".")) {
+                            // cek apakah di kirinya ada jalan kosong
+                            // TODO: 11/18/17 do something in here
+                            isTeleport = false;
+                        } else if (barisIndexStartTemp - 1 > 0 && detailMap[barisIndexStartTemp - 1][kolomIndexStartTemp].equals(".")) {
+                            // cek apakah di atasnya ada jalan kosong
+                            // TODO: 11/18/17 do something in here
+                            isTeleport = false;
+                        } else if (kolomIndexStartTemp + 1 < kolom && detailMap[barisIndexStartTemp][kolomIndexStartTemp + 1].equals(".")) {
+                            // cek apakah di kanannya ada jalan kosong
+                            // TODO: 11/18/17 do something in here
+                            isTeleport = false;
+                        }
                     } else {
                         kar = detailMap[barisIndexStartTemp - 1][kolomIndexStart];
                         if (kar.equals(".")) {
