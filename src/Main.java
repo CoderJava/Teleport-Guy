@@ -61,33 +61,45 @@ public class Main {
                         if (kolomIndexStartTemp - 2 > 0 && detailMap[barisIndexStartTemp][kolomIndexStartTemp - 1].equals("#")
                                 && detailMap[barisIndexStartTemp][kolomIndexStartTemp - 2].equalsIgnoreCase("o")) {
                             // cek apakah di kirinya ada tembok dan setelahnya teleport
-                            // TODO: 11/18/17 do something in here
                             isTeleport = true;
                             totalTimeJump += totalTimeJump;
+                            historyBaris.add(barisIndexStart);
+                            historyKolom.add(kolomIndexStart);
+                            kolomIndexStart -= 2;
                         } else if (barisIndexStartTemp - 2 > 0 && detailMap[barisIndexStartTemp - 1][kolomIndexStartTemp].equals("#")
                                 && detailMap[barisIndexStartTemp - 2][kolomIndexStartTemp].equalsIgnoreCase("o")) {
                             // cek apakah di atasnya ada tembok dan setelahnya teleport
-                            // TODO: 11/18/17 do something in here
                             isTeleport = true;
                             totalTimeJump += totalTimeJump;
+                            historyBaris.add(barisIndexStart);
+                            historyKolom.add(kolomIndexStart);
+                            barisIndexStart -= 2;
                         } else if (kolomIndexStartTemp + 2 < kolom && detailMap[barisIndexStartTemp][kolomIndexStartTemp + 1].equals("#")
                                 && detailMap[barisIndexStartTemp][kolomIndexStartTemp + 2].equalsIgnoreCase("o")) {
                             // cek apakah di kanannya ada tembok dan setelahnya teleport
-                            // TODO: 11/18/17 do something in here
                             isTeleport = true;
                             totalTimeJump += totalTimeJump;
+                            historyBaris.add(barisIndexStart);
+                            historyKolom.add(kolomIndexStart);
+                            kolomIndexStart += 2;
                         } else if (kolomIndexStartTemp - 1 > 0 && detailMap[barisIndexStartTemp][kolomIndexStartTemp - 1].equals(".")) {
                             // cek apakah di kirinya ada jalan kosong
-                            // TODO: 11/18/17 do something in here
                             isTeleport = false;
+                            historyBaris.add(barisIndexStart);
+                            historyKolom.add(kolomIndexStart);
+                            kolomIndexStart -= 1;
                         } else if (barisIndexStartTemp - 1 > 0 && detailMap[barisIndexStartTemp - 1][kolomIndexStartTemp].equals(".")) {
                             // cek apakah di atasnya ada jalan kosong
-                            // TODO: 11/18/17 do something in here
                             isTeleport = false;
+                            historyBaris.add(barisIndexStart);
+                            historyKolom.add(kolomIndexStart);
+                            barisIndexStart -= 1;
                         } else if (kolomIndexStartTemp + 1 < kolom && detailMap[barisIndexStartTemp][kolomIndexStartTemp + 1].equals(".")) {
                             // cek apakah di kanannya ada jalan kosong
-                            // TODO: 11/18/17 do something in here
                             isTeleport = false;
+                            historyBaris.add(barisIndexStart);
+                            historyKolom.add(kolomIndexStart);
+                            kolomIndexStart += 1;
                         }
                     } else {
                         kar = detailMap[barisIndexStartTemp - 1][kolomIndexStart];
@@ -114,10 +126,81 @@ public class Main {
                     }
                     break;
                 case 2:
+                    if (kolomIndexStartTemp + 1 > kolom - 1) {
+                        direction = 3;
+                    } else if (isTeleport) {
+                        if (barisIndexStartTemp - 2 > 0 && detailMap[barisIndexStartTemp - 1][kolomIndexStartTemp].equals("#")
+                                && detailMap[barisIndexStartTemp - 2][kolomIndexStartTemp].equalsIgnoreCase("o")) {
+                            // cek apakah di atasnya ada tembok dan setelahnya teleport
+                            isTeleport = true;
+                            totalTimeJump += totalTimeJump;
+                            historyBaris.add(barisIndexStartTemp);
+                            historyKolom.add(kolomIndexStartTemp);
+                            barisIndexStart -= 2;
+                        } else if (kolomIndexStartTemp + 2 < kolom - 1 && detailMap[barisIndexStartTemp][kolomIndexStartTemp + 1].equals("#")
+                                && detailMap[barisIndexStartTemp][kolomIndexStartTemp + 2].equalsIgnoreCase("o")) {
+                            // cek apakah di kanannya ada tembok dan setelahnya teleport
+                            isTeleport = true;
+                            totalTimeJump += totalTimeJump;
+                            historyBaris.add(barisIndexStartTemp);
+                            historyKolom.add(kolomIndexStartTemp);
+                            kolomIndexStart += 2;
+                        } else if (barisIndexStartTemp + 2 < baris - 1 && detailMap[barisIndexStartTemp + 1][kolomIndexStartTemp].equals("#")
+                                && detailMap[barisIndexStartTemp + 2][kolomIndexStartTemp].equalsIgnoreCase("o")) {
+                            // cek apakah di bawahnya ada tembok dan setelahnya teleport
+                            isTeleport = true;
+                            totalTimeJump += totalTimeJump;
+                            historyBaris.add(barisIndexStartTemp);
+                            historyKolom.add(kolomIndexStartTemp);
+                            barisIndexStart += 2;
+                        } else if (barisIndexStartTemp - 1 > 0 && detailMap[barisIndexStartTemp - 1][kolomIndexStartTemp].equals(".")) {
+                            // cek apakah di atasnya ada jalan kosong
+                            isTeleport = false;
+                            historyBaris.add(barisIndexStart);
+                            historyKolom.add(kolomIndexStart);
+                            barisIndexStart += 1;
+                        } else if (kolomIndexStartTemp + 1 < kolom - 1 && detailMap[barisIndexStartTemp][kolomIndexStartTemp + 1].equals(".")) {
+                            // cek apakah di kanannya ada jalan kosong
+                            isTeleport = false;
+                            historyBaris.add(barisIndexStart);
+                            historyKolom.add(kolomIndexStart);
+                            kolomIndexStart += 1;
+                        } else if (barisIndexStartTemp + 1 < baris - 1 && detailMap[barisIndexStartTemp + 1][kolomIndexStartTemp].equals(".")) {
+                            // cek apakah di bawahnya ada jalan kosong
+                            isTeleport = false;
+                            historyBaris.add(barisIndexStart);
+                            historyKolom.add(kolomIndexStart);
+                            barisIndexStart += 1;
+                        }
+                    } else {
+                        kar = detailMap[barisIndexStartTemp][kolomIndexStart + 1];
+                        if (kar.equals(".")) {
+                            boolean isBackward = checkBackward(direction, historyBaris, historyKolom, barisIndexStart, kolomIndexStart);
+                            if (isBackward) {
+                                barisIndexStart = historyBaris.get(historyBaris.size() - 1);
+                                kolomIndexStart = historyKolom.get(historyKolom.size() - 1);
+                                removeLastHistory(historyBaris, historyKolom);
+                                direction = 3;
+                            } else {
+                                historyBaris.add(barisIndexStart);
+                                historyKolom.add(kolomIndexStart);
+                                kolomIndexStart++;
+                            }
+                        } else if (kar.equalsIgnoreCase("o")) {
+                            historyBaris.add(barisIndexStart);
+                            historyKolom.add(kolomIndexStart);
+                            kolomIndexStart++;
+                            isTeleport = true;
+                        } else if (kar.equals("#")) {
+                            direction = 3;
+                        }
+                    }
                     break;
                 case 3:
+                    // TODO: 11/18/17 do something in here
                     break;
                 case 4:
+                    // TODO: 11/18/17 do something in here
                     break;
             }
         }
