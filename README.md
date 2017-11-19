@@ -27,63 +27,70 @@ Format Keluaran
 Keluarkan sebuah angka yang menandakan waktu minimal yang dibutuhkan pemain(dalam detik) untuk mencapai posisi tujuan. Jika pemain tidak dapat mencapai posisi tujuan, keluarkan -1.
 
 Contoh Masukan 1
-
+```
 3 3 2
 ..T
 S..
 ...
+```
+
 Contoh Keluaran 1
-
 3
-Contoh Masukan 2
 
+Contoh Masukan 2
+```
 4 4 2
 #..S
 o#o.
 #.#.
 ..T#
+```
+
 Contoh Keluaran 2
-
 -1
-Contoh Masukan 3
 
+Contoh Masukan 3
+```
 5 4 4
 #..S
 o#o.
 #.#.
 o.T#
 ....
+```
+
 Contoh Keluaran 3
-
 12
-Batasan
 
+
+Batasan
 Dijamin hanya terdapat satu karakter S dan satu karakter T
 
 Subtask 1: (10 Poin)
-
+```
 2 ≤ N, M ≤ 100
 1 ≤ P ≤ 100
 Tidak terdapat karakter o dan # dalam peta
+```
  
-
 Subtask 2: (10 Poin)
-
+```
 2 ≤ N, M ≤ 100
 1 ≤ P ≤ 100
 Tidak terdapat karakter o dalam peta
- 
+```
 
 Subtask 3: (20 Poin)
-
+```
 2 ≤ N, M ≤ 100
 1 ≤ P ≤ 100
- 
+```
 
 Subtask 4: (60 Poin)
-
+```
 2 ≤ N, M ≤ 1000
 1 ≤ P ≤ 100
+```
 
 # Output
 ### Test Case 1
