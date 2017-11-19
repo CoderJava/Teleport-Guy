@@ -63,7 +63,9 @@ o.T#
 ```
 
 **Contoh Keluaran 3**
+```
 12
+```
 
 
 **Batasan**
