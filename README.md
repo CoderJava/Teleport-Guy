@@ -15,11 +15,11 @@ Untuk mencapai posisi tujuan, pemain bisa melangkah ke atas, bawah, kiri, atau k
 
 Karena John sangat sibuk sehingga ia tidak punya waktu untuk mencoba peta yang dibuatnya. Maka dari itu ia meminta bantuan anda untuk menentukan apakah pemain dapat mencapai posisi tujuan, jika iya bantulah ia juga untuk mencari waktu minimal yang dibutuhkan pemain untuk mencapai posisi tujuan.
 
-Format Masukan
+**Format Masukan**
 
 Baris pertama berisi 3 buah bilangan bulat N, M dan P, yang menyatakan ukuran peta dan waktu yang diperlukan untuk melakukan sekali jump. N baris berikutnya berisi M buah karakter S, T, o, ., atau #.
 
-Format Keluaran
+**Format Keluaran**
 
 Keluarkan sebuah angka yang menandakan waktu minimal yang dibutuhkan pemain(dalam detik) untuk mencapai posisi tujuan. Jika pemain tidak dapat mencapai posisi tujuan, keluarkan -1.
 
@@ -35,7 +35,7 @@ S..
 ```
 3
 ```
-
+<br />
 **Contoh Masukan 2**
 ```
 4 4 2
@@ -49,7 +49,7 @@ o#o.
 ```
 -1
 ```
-
+<br />
 **Contoh Masukan 3**
 ```
 5 4 4
