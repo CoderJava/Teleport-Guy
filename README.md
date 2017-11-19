@@ -2,7 +2,7 @@
 Test Programmer
 
 # Dekripsi
-## <center>Teleport Guy</center>
+<h2><center>Teleport Guy</center></h3>
 Deskripsi
 
 John sedang mengembangkan aplikasi game baru berjudul "Teleport Guy". Game tersebut adalah game dengan kategori puzzle dimana pemain akan berada di posisi awal dari suatu peta dan harus mencapai posisi tujuan dalam waktu secepat mungkin. Karena John baru pertama kali membuat game, ia meminta bantuan anda.
